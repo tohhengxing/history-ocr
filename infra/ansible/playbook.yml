@@ -1,0 +1,62 @@
+---
+- name: Configure web server
+  hosts: web
+
+  tasks:
+    - name: Enable ufw
+      community.general.ufw:
+        state: enabled
+    - name: Allow all outbound traffic
+      community.general.ufw:
+        rule: allow
+        direction: out
+    - name: Allow rate-limited ssh
+      community.general.ufw:
+        rule: limit
+        port: ssh
+        proto: tcp
+    - name: Allow http
+      community.general.ufw:
+        rule: allow
+        port: '80'
+        proto: tcp
+    - name: Allow https
+      community.general.ufw:
+        rule: allow
+        port: '443'
+        proto: tcp
+    # The ordering of deny task matters
+    - name: Deny all inbound traffic to all ports
+      community.general.ufw:
+        rule: deny
+        direction: in
+    - name: Install caddy
+      ansible.builtin.apt:
+        name: caddy
+        update_cache: yes
+    - name: copy cloudflare cert
+      ansible.builtin.copy:
+        src: history.pem
+        dest: /etc/caddy/history.pem
+        owner: caddy
+        group: caddy
+        mode: '0600'
+    - name: copy cloudflare key
+      ansible.builtin.copy:
+        src: history.key
+        dest: /etc/caddy/history.key
+        owner: caddy
+        group: caddy
+        mode: '0600'
+    - name: copy caddyfile
+      ansible.builtin.copy:
+        src: Caddyfile
+        dest: /etc/caddy/Caddyfile
+        owner: caddy
+        group: caddy
+        mode: '0600'
+    - name: Restart caddy
+      ansible.builtin.systemd_service:
+        state: restarted
+        daemon_reload: true
+        name: caddy
