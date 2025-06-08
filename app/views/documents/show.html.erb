@@ -2,8 +2,12 @@
 
 <%= link_to 'Back', documents_path %>
 
-<% if @document.image.attached? %>
-  <%= image_tag @document.image %>
-<% else %>
-  <p>No image attached</p>
+<% if @document.image %>
+  <div data-controller="viewer"
+       data-viewer-image-url-value="<%= url_for(@document.image) %>"
+       style="height: 600px;">
+    <div data-viewer-target="container"
+         id="openseadragon-viewer"
+         style="height: 100%;"></div>
+  </div>
 <% end %>
