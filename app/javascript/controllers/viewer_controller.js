@@ -13,7 +13,8 @@ export default class extends Controller {
             tileSources: {
                 type: 'image',
                 url: this.imageUrlValue
-            }
+            },
+            showFullPageControl: false
         })
     }
 
