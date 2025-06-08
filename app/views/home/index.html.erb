@@ -5,6 +5,9 @@
   <% if current_user.admin? %>
     <p> You can see this if you are an admin</p>
   <% end %>
+  <div data-controller="hello">
+    Original content
+  </div>
 <% else %>
   <p><%= link_to "Login", login_path %></p>
 <% end %>
