@@ -1,0 +1,10 @@
+<h1>Welcome</h1>
+
+<% if logged_in? %>
+  <p>Hello, <%= current_user.username %></p>
+  <% if current_user.admin? %>
+    <p> You can see this if you are an admin</p>
+  <% end %>
+<% else %>
+  <p><%= link_to "Login", login_path %></p>
+<% end %>
