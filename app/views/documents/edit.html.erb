@@ -1,0 +1,29 @@
+<h1>Edit document</h1>
+
+<%= form_with model: @document do |form| %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+    <% if @document.image.attached? %>
+      <p>Current image: <%= @document.image.filename %></p>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :annotation %>
+    <%= form.text_area :annotation %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update" %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @document %> |
+<%= link_to 'Back', documents_path %>

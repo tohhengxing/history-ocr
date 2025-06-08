@@ -1,0 +1,9 @@
+<h1><%= @document.name %></h1>
+
+<%= link_to 'Back', documents_path %>
+
+<% if @document.image.attached? %>
+  <%= image_tag @document.image %>
+<% else %>
+  <p>No image attached</p>
+<% end %>
