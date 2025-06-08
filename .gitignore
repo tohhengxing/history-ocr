@@ -39,3 +39,7 @@
 *.tfstate
 *.tfstate.*
 *.plan
+
+# rubymine config
+**/.idea/history-ocr.iml
+**/.idea/*
