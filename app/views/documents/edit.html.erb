@@ -5,9 +5,10 @@
      data-annotator-image-url-value="<%= url_for(@document.image) %>"
      style="height: 500px;">
 
-  <button data-annotator-target="enableDraw" data-action="click->annotator#enableDrawing">Enable Drawing</button>
-  <button data-annotator-target="disableDraw" data-action="click->annotator#disableDrawing">Disable Drawing</button>
-
+  <button data-annotator-target="enableDraw" data-action="click->annotator#enableDrawing">Enable drawing mode</button>
+  <button data-annotator-target="disableDraw" data-action="click->annotator#disableDrawing">Disable drawing mode</button>
+  <button data-annotator-target="enableEdit" data-action="click->annotator#enableEdit">Enable moving annotation mode</button>
+  <button data-annotator-target="disableEdit" data-action="click->annotator#disableEdit">Disable moving annotation mode</button>
 
   <div data-annotator-target="container"
        id="openseadragon-annotator"

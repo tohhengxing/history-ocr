@@ -1,12 +1,12 @@
 import OpenSeadragon from 'openseadragon';
-import { createOSDAnnotator } from '@annotorious/openseadragon';
+import { createOSDAnnotator, UserSelectAction } from '@annotorious/openseadragon';
 
 // Import essential CSS styles
 import '@annotorious/openseadragon/annotorious-openseadragon.css';
 import {Controller} from "@hotwired/stimulus";
 
 export default class extends Controller {
-    static targets = ["container", "enableDraw", "disableDraw", "annotatorField"]
+    static targets = ["container", "enableDraw", "disableDraw", "annotatorField", "enableEdit", "disableEdit"]
     static values = { imageUrl: String }
 
     allAnnotations = []
@@ -28,6 +28,7 @@ export default class extends Controller {
 
         this.anno = createOSDAnnotator(this.viewer, {
             drawingEnabled: false,
+            userSelectAction: UserSelectAction.SELECT,
             style: {
                 fill: '#ff0000',
                 fillOpacity: 0.25
@@ -36,22 +37,24 @@ export default class extends Controller {
 
         if (this.annotatorFieldTarget.value) {
             this.allAnnotations = JSON.parse(this.annotatorFieldTarget.value)
-            this.allAnnotations.forEach(ann => this.anno.addAnnotation(ann));
+            this.anno.setAnnotations(this.allAnnotations)
         }
 
-        // await this.anno.loadAnnotations('/test.json')
-
-
         this.anno.on('createAnnotation',  (annotation) => {
-            console.log('created', annotation);
             this.allAnnotations.push(annotation)
             this.annotatorFieldTarget.value = JSON.stringify(this.allAnnotations)
             console.log(this.annotatorFieldTarget.value)
         });
 
         this.anno.on('clickAnnotation', (annotation, originalEvent) => {
-            console.log('Annotation clicked: ' + annotation.id);
+            console.log('Annotation clicked: ' + JSON.stringify(annotation));
         });
+
+        this.anno.on('updateAnnotation', (updated,previous) => {
+            console.log('annotation updated')
+            console.log('annotation previous', previous)
+            console.log('annotation updated', updated)
+        })
 
 
      }
@@ -60,16 +63,25 @@ export default class extends Controller {
         this.anno.setDrawingEnabled(true);
     }
 
+    enableEdit() {
+        this.anno.setUserSelectAction(ann => {
+            return UserSelectAction.EDIT
+        })
+    }
+
+    disableEdit() {
+        this.anno.setUserSelectAction(ann => {
+            return UserSelectAction.SELECT
+        })
+    }
+
     updateField() {
-        this.annotatorFieldTarget.value = JSON.stringify(this.allAnnotations)
+        // this.annotatorFieldTarget.value = JSON.stringify(this.allAnnotations)
         console.log(this.annotatorFieldTarget.value)
     }
 
     disableDrawing() {
         this.anno.setDrawingEnabled(false);
-        this.anno.on('clickAnnotation', (annotation, originalEvent) => {
-            console.log('Annotation clicked: ' + annotation.id);
-        });
     }
 
     disconnect() {
