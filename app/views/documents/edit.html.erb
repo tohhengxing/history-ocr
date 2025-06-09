@@ -1,46 +1,50 @@
 <h1>Edit document</h1>
 
+<div class="page-layout"
+     data-controller="annotator"
+     data-annotator-image-url-value="<%= url_for(@document.image) %>">
+  <div class="left-panel">
+    <div style="height: 500px;">
 
-<div data-controller="annotator"
-     data-annotator-image-url-value="<%= url_for(@document.image) %>"
-     style="height: 500px;">
+      <button data-annotator-target="enableDraw" data-action="click->annotator#enableDrawing">Enable drawing mode</button>
+      <button data-annotator-target="disableDraw" data-action="click->annotator#disableDrawing">Disable drawing mode</button>
+      <button data-annotator-target="enableEdit" data-action="click->annotator#enableEdit">Enable moving annotation mode</button>
+      <button data-annotator-target="disableEdit" data-action="click->annotator#disableEdit">Disable moving annotation mode</button>
 
-  <button data-annotator-target="enableDraw" data-action="click->annotator#enableDrawing">Enable drawing mode</button>
-  <button data-annotator-target="disableDraw" data-action="click->annotator#disableDrawing">Disable drawing mode</button>
-  <button data-annotator-target="enableEdit" data-action="click->annotator#enableEdit">Enable moving annotation mode</button>
-  <button data-annotator-target="disableEdit" data-action="click->annotator#disableEdit">Disable moving annotation mode</button>
-
-  <div data-annotator-target="container"
-       id="openseadragon-annotator"
-       style="height: 100%;margin-bottom: 100px"></div>
-
-<%= form_with model: @document do |form| %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+      <div data-annotator-target="container"
+           id="openseadragon-annotator"
+           style="height: 100%; margin-bottom: 100px;"></div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-    <% if @document.image.attached? %>
-      <p>Current image: <%= @document.image.filename %></p>
+  <div class="right-panel">
+    <%= form_with model: @document do |form| %>
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </div>
+
+      <div class="field">
+        <%= form.label :image %>
+        <%= form.file_field :image %>
+        <% if @document.image.attached? %>
+          <p>Current image: <%= @document.image.filename %></p>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= form.hidden_field :annotation, data: { annotator_target: "annotatorField" },
+                              value: @document.annotation || '[]' %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "Update" %>
+      </div>
     <% end %>
+    <div style="margin-top:100px;">
+      <%= link_to 'Show', @document %> |
+      <%= link_to 'Back', documents_path %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.hidden_field :annotation, data: { annotator_target: "annotatorField" },
-    value: @document.annotation || '[]' %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Update" %>
-  </div>
-<% end %>
 </div>
 
-<div style="margin-top:100px;">
-  <%= link_to 'Show', @document %> |
-  <%= link_to 'Back', documents_path %>
-</div>

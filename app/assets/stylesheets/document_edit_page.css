@@ -1,0 +1,22 @@
+.page-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    gap: 20px;
+}
+
+.left-panel {
+    padding: 20px;
+}
+
+.right-panel {
+    position: relative;
+}
+
+.form-wrapper {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 90%;
+    max-width: 400px;
+}
