@@ -11,6 +11,8 @@ export default class extends Controller {
 
     allAnnotations = []
 
+    annotationMap = {}
+
     async  connect() {
         console.log(this.imageUrlValue)
         this.viewer = OpenSeadragon({
@@ -38,12 +40,17 @@ export default class extends Controller {
         if (this.annotatorFieldTarget.value) {
             this.allAnnotations = JSON.parse(this.annotatorFieldTarget.value)
             this.anno.setAnnotations(this.allAnnotations)
+
+            this.allAnnotations.forEach((ann) => {
+                this.annotationMap[ann.id] = ann
+            })
         }
 
         this.anno.on('createAnnotation',  (annotation) => {
             this.allAnnotations.push(annotation)
             this.annotatorFieldTarget.value = JSON.stringify(this.allAnnotations)
             console.log(this.annotatorFieldTarget.value)
+            this.annotationMap[annotation.id] = annotation
         });
 
         this.anno.on('clickAnnotation', (annotation, originalEvent) => {
@@ -54,6 +61,10 @@ export default class extends Controller {
             console.log('annotation updated')
             console.log('annotation previous', previous)
             console.log('annotation updated', updated)
+
+            this.annotationMap[previous.id] = updated
+            this.allAnnotations = Object.values(this.annotationMap)
+            this.annotatorFieldTarget.value = JSON.stringify(this.allAnnotations)
         })
 
 
