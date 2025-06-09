@@ -1,5 +1,14 @@
 <h1>Edit document</h1>
 
+
+<div data-controller="viewer"
+     data-viewer-image-url-value="<%= url_for(@document.image) %>"
+     style="height: 600px;">
+  <div data-viewer-target="container"
+       id="openseadragon-viewer"
+       style="height: 100%;"></div>
+</div>
+
 <%= form_with model: @document do |form| %>
 
   <div class="field">
