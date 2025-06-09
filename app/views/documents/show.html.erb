@@ -5,6 +5,7 @@
 <% if @document.image %>
   <div data-controller="viewer"
        data-viewer-image-url-value="<%= url_for(@document.image) %>"
+       data-viewer-annotations-value="<%= @document.annotation %>"
        style="height: 600px;">
     <div data-viewer-target="container"
          id="openseadragon-viewer"
