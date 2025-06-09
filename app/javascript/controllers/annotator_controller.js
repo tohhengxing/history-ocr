@@ -20,7 +20,10 @@ export default class extends Controller {
                 type: 'image',
                 url: this.imageUrlValue
             },
-            showFullPageControl: false
+            showFullPageControl: false,
+            gestureSettingsMouse: {
+                clickToZoom: false
+            }
         })
 
         this.anno = createOSDAnnotator(this.viewer, {
