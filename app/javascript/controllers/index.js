@@ -6,5 +6,7 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 import ViewerController from "./viewer_controller"
+import AnnotatorController from "./annotator_controller"
 application.register("hello", HelloController)
 application.register("viewer", ViewerController)
+application.register("annotator", AnnotatorController)

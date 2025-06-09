@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :require_login
-  before_action :set_document, only: [:show, :edit, :destroy]
+  before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   def index
     @documents = Document.all
@@ -25,6 +25,15 @@ class DocumentsController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @document.update(document_params)
+      redirect_to @document, notice: "Document was successfully updated"
+    else
+      flash.now[:error] = "Invalid inputs"
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy

@@ -1,13 +1,17 @@
 <h1>Edit document</h1>
 
 
-<div data-controller="viewer"
-     data-viewer-image-url-value="<%= url_for(@document.image) %>"
-     style="height: 600px;">
-  <div data-viewer-target="container"
-       id="openseadragon-viewer"
-       style="height: 100%;"></div>
-</div>
+<div data-controller="annotator"
+     data-annotator-image-url-value="<%= url_for(@document.image) %>"
+     style="height: 500px;">
+
+  <button data-annotator-target="enableDraw" data-action="click->annotator#enableDrawing">Enable Drawing</button>
+  <button data-annotator-target="disableDraw" data-action="click->annotator#disableDrawing">Disable Drawing</button>
+
+
+  <div data-annotator-target="container"
+       id="openseadragon-annotator"
+       style="height: 100%;margin-bottom: 100px"></div>
 
 <%= form_with model: @document do |form| %>
 
@@ -26,13 +30,17 @@
 
   <div class="field">
     <%= form.label :annotation %>
-    <%= form.text_area :annotation %>
+    <%= form.text_area :annotation, data: { annotator_target: "annotatorField" },
+    value: @document.annotation || '[]' %>
   </div>
 
   <div class="actions">
     <%= form.submit "Update" %>
   </div>
 <% end %>
+</div>
 
-<%= link_to 'Show', @document %> |
-<%= link_to 'Back', documents_path %>
+<div style="margin-top:100px;">
+  <%= link_to 'Show', @document %> |
+  <%= link_to 'Back', documents_path %>
+</div>
