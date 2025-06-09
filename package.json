@@ -9,6 +9,7 @@
     "esbuild": "^0.25.5"
   },
   "dependencies": {
+    "@annotorious/openseadragon": "^3.4.3",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.16",
     "openseadragon": "^5.0.1"
