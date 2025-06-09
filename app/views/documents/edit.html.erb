@@ -30,8 +30,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :annotation %>
-    <%= form.text_area :annotation, data: { annotator_target: "annotatorField" },
+    <%= form.hidden_field :annotation, data: { annotator_target: "annotatorField" },
     value: @document.annotation || '[]' %>
   </div>
 
