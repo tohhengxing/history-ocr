@@ -50,5 +50,5 @@
 /node_modules
 
 # javascript
-.pnp.cjs
+.pnp.*
 .yarn
