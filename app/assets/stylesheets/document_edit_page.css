@@ -10,7 +10,19 @@
 }
 
 .right-panel {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+}
+
+.top-content {
+    flex-grow: 1;
+    overflow: auto; /* optional, if content may overflow */
+}
+
+.bottom-content {
+    margin-top: 20px; /* optional spacing */
 }
 
 .form-wrapper {

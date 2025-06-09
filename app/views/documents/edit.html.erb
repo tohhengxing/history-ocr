@@ -18,33 +18,56 @@
   </div>
 
   <div class="right-panel">
-    <%= form_with model: @document do |form| %>
-      <div class="field">
-        <%= form.label :name %>
-        <%= form.text_field :name %>
+    <div class="top-content">
+      <div data-annotator-target="translation" hidden>
+        <label for="translation">input your translation</label>
+        <input id="translation" type="text">
+        <button>update annotation</button>
       </div>
+      <div>
 
-      <div class="field">
-        <%= form.label :image %>
-        <%= form.file_field :image %>
-        <% if @document.image.attached? %>
-          <p>Current image: <%= @document.image.filename %></p>
-        <% end %>
-      </div>
+        <ol>
+          <% JSON.parse(@document.annotation || '').each do |anno| %>
+            <li>
+              <%= anno['id'] %> <br />
+              <%= anno['bodies'] %>
+            </li>
+          <% end %>
+        </ol>
 
-      <div class="field">
-        <%= form.hidden_field :annotation, data: { annotator_target: "annotatorField" },
-                              value: @document.annotation || '[]' %>
-      </div>
 
-      <div class="actions">
-        <%= form.submit "Update" %>
       </div>
-    <% end %>
-    <div style="margin-top:100px;">
-      <%= link_to 'Show', @document %> |
-      <%= link_to 'Back', documents_path %>
     </div>
+    <div class="bottom-content">
+      <%= form_with model: @document do |form| %>
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name %>
+        </div>
+
+        <div class="field">
+          <%= form.label :image %>
+          <%= form.file_field :image %>
+          <% if @document.image.attached? %>
+            <p>Current image: <%= @document.image.filename %></p>
+          <% end %>
+        </div>
+
+        <div class="field">
+          <%= form.hidden_field :annotation, data: { annotator_target: "annotatorField" },
+                                value: @document.annotation || '[]' %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Update" %>
+        </div>
+      <% end %>
+      <div style="margin-top:100px;">
+        <%= link_to 'Show', @document %> |
+        <%= link_to 'Back', documents_path %>
+      </div>
+    </div>
+
   </div>
 </div>
 

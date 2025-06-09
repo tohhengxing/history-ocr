@@ -6,7 +6,7 @@ import '@annotorious/openseadragon/annotorious-openseadragon.css';
 import {Controller} from "@hotwired/stimulus";
 
 export default class extends Controller {
-    static targets = ["container", "enableDraw", "disableDraw", "annotatorField", "enableEdit", "disableEdit"]
+    static targets = ["container", "enableDraw", "disableDraw", "annotatorField", "enableEdit", "disableEdit", "translation"]
     static values = { imageUrl: String }
 
     allAnnotations = []
@@ -55,7 +55,9 @@ export default class extends Controller {
 
         this.anno.on('clickAnnotation', (annotation, originalEvent) => {
             console.log('Annotation clicked: ' + JSON.stringify(annotation));
+            this.translationTarget.hidden = false;
         });
+
 
         this.anno.on('updateAnnotation', (updated,previous) => {
             console.log('annotation updated')

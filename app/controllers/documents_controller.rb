@@ -29,7 +29,7 @@ class DocumentsController < ApplicationController
 
   def update
     if @document.update(document_params)
-      redirect_to @document, notice: "Document was successfully updated"
+      redirect_to edit_document_path(@document), notice: "Document was successfully updated"
     else
       flash.now[:error] = "Invalid inputs"
       render :edit, status: :unprocessable_entity
