@@ -72,18 +72,30 @@ export default class extends Controller {
 
     enableDrawing() {
         this.anno.setDrawingEnabled(true);
+        this.anno.setStyle({
+            fill: '#AFE1AF',
+            fillOpacity: 0.25}
+        )
     }
 
     enableEdit() {
         this.anno.setUserSelectAction(ann => {
             return UserSelectAction.EDIT
         })
+        this.anno.setStyle({
+            fill: '#E4D00A',
+            fillOpacity: 0.25}
+        )
     }
 
     disableEdit() {
         this.anno.setUserSelectAction(ann => {
             return UserSelectAction.SELECT
         })
+        this.anno.setStyle({
+            fill: '#ff0000',
+            fillOpacity: 0.25}
+        )
     }
 
     updateField() {
@@ -93,6 +105,10 @@ export default class extends Controller {
 
     disableDrawing() {
         this.anno.setDrawingEnabled(false);
+        this.anno.setStyle({
+            fill: '#ff0000',
+            fillOpacity: 0.25}
+        )
     }
 
     disconnect() {
