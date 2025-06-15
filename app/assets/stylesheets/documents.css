@@ -46,6 +46,19 @@
     text-align: left;
 }
 
+.documents-index-table__cell-action-button-container {
+    display: flex;
+    text-align: left;
+}
+
+.documents-index-table__cell-action-button {
+    margin-left: 1rem;
+}
+
+.documents-index-table__cell-action-button:first-child {
+    margin-left: 0;
+}
+
 .documents-upload__card {
     background: #fff;
     padding: 1.5rem;
