@@ -1,0 +1,48 @@
+.navbar {
+    background: white;
+    color: black;
+    padding: 0.25rem 0;
+    border: 1px solid black;
+}
+
+.navbar__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 2rem;
+}
+
+.navbar__brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: black;
+    text-decoration: none;
+    flex: 1;
+    text-align: left;
+}
+
+.navbar__menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-end;
+}
+
+.navbar__item {
+    color: black;
+    font-weight: 500;
+    margin-right: 2rem;
+}
+
+.navbar__link {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.navbar__link:hover {
+    opacity: 0.7;
+}

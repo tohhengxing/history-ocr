@@ -27,12 +27,7 @@
   </head>
 
   <body style="font-family: Inter, sans-serif; font-weight: 400">
-  <% if logged_in? %>
-    <p>
-      Logged in as: <%= current_user.username %>
-      <%= link_to "Logout", logout_path, data: { turbo_method: :delete } %>
-    </p>
-  <% end %>
+    <%= render "shared/navbar" %>
     <%= yield %>
   </body>
 </html>

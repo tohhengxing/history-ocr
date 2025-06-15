@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <div class="navbar__container">
+    <div class="navbar__brand">Historical Image Tagging System</div>
+    <div class="navbar__item">Currently logged in as: <%=current_user.username %></div>
+    <ul class="navbar__menu">
+      <% if logged_in? %>
+        <li class="navbar__link"><a href="/" class="navbar__link">User Management</a></li>
+        <%= link_to "Documents", documents_path, class: "navbar__link" %>
+        <%= link_to "Logout", logout_path, data: { turbo_method: :delete }, class: "navbar__link" %>
+      <% else %>
+        <%= link_to "Login", login_path, class: "navbar__link" %>
+      <% end %>
+
+    </ul>
+  </div>
+</nav>
