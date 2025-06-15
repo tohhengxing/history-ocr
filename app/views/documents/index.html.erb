@@ -19,19 +19,8 @@
 
     <%= turbo_frame_tag "documents" do %>
       <% @documents.each do |d| %>
-        <%= render partial: "document_row", locals: { d: d} %>
+        <%= render partial: "document_row", locals: { d: d } %>
       <% end %>
     <% end %>
   </div>
-
-<!--  <ul>-->
-    <%# @documents.each do |document| %>
-<!--      <li>-->
-        <%#= link_to document.name, document_path(document) %>
-        <%#= link_to 'edit', edit_document_path(document) %>
-        <%#= button_to 'Delete', document, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-<!--      </li>-->
-    <%# end %>
-<!--  </ul>-->
-
 </div>
