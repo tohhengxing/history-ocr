@@ -23,8 +23,11 @@ class DocumentsController < ApplicationController
         format.html { redirect_to documents_path }
       end
     else
-      flash.now[:error] = "Invalid inputs"
-      render :new, status: :unprocessable_entity
+      flash.now[:error] = "File already exists!"
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to documents_path }
+      end
     end
   end
 
