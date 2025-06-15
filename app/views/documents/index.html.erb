@@ -1,13 +1,20 @@
-<h1>Documents</h1>
+<div class="documents-index-container">
 
-<%= link_to 'Upload Document', new_document_path %>
 
-<ul>
-  <% @documents.each do |document| %>
-    <li>
-      <%= link_to document.name, document_path(document) %>
-      <%= link_to 'edit', edit_document_path(document) %>
-      <%= button_to 'Delete', document, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-    </li>
+  <h1 class="documents-index-title">Documents</h1>
+
+  <%= turbo_frame_tag "new_document" do %>
+    <%= render "form", document: @document %>
   <% end %>
-</ul>
+
+  <ul>
+    <% @documents.each do |document| %>
+      <li>
+        <%= link_to document.name, document_path(document) %>
+        <%= link_to 'edit', edit_document_path(document) %>
+        <%= button_to 'Delete', document, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+      </li>
+    <% end %>
+  </ul>
+
+</div>

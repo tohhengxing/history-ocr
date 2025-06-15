@@ -1,0 +1,56 @@
+.documents-index-container {
+    width: 70%;
+    margin: 2rem auto;
+}
+
+.documents-index-title {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.documents-index-action-bar {
+
+}
+
+.documents-upload__card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 90vw;
+}
+
+.documents-upload__card__title {
+    margin-top: 0;
+}
+
+.documents-upload__card__field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.documents-upload__card__label {
+    font-weight: 500;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.documents-upload__card__button_row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.documents-upload__card__button {
+    width: 100%;
+    padding: 0.75rem;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+}
