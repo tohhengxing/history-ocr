@@ -20,9 +20,13 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"%>
   </head>
 
-  <body>
+  <body style="font-family: Inter, sans-serif; font-weight: 400">
   <% if logged_in? %>
     <p>
       Logged in as: <%= current_user.username %>
