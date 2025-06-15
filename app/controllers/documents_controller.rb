@@ -18,7 +18,10 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
     @document.name = document_params[:image].original_filename
     if @document.save
-      redirect_to documents_path, notice: "Document was successfully created"
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to documents_path }
+      end
     else
       flash.now[:error] = "Invalid inputs"
       render :new, status: :unprocessable_entity

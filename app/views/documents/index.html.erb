@@ -15,15 +15,13 @@
       <div class="documents-index-table__cell">Actions</div>
     </div>
 
-    <% @documents.each do |d| %>
-      <div class="documents-index-table__row">
-        <div class="documents-index-table__cell"><%= d.name %></div>
-        <div class="documents-index-table__cell">temp modified by</div>
-        <div class="documents-index-table__cell">temp modified time</div>
-        <div class="documents-index-table__cell">temp actions</div>
-      </div>
-    <% end %>
+    <%= turbo_stream_from "documents" %>
 
+    <%= turbo_frame_tag "documents" do %>
+      <% @documents.each do |d| %>
+        <%= render partial: "document_row", locals: { d: d} %>
+      <% end %>
+    <% end %>
   </div>
 
 <!--  <ul>-->
