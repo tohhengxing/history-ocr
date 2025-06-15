@@ -25,8 +25,8 @@ class DocumentsController < ApplicationController
     else
       flash.now[:error] = "File already exists!"
       respond_to do |format|
-        format.turbo_stream
-        format.html { redirect_to documents_path }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("new_document", partial: "form", locals: { document: @document }) }
+        format.html { render :index, status: :unprocessable_entity }
       end
     end
   end
