@@ -7,14 +7,33 @@
     <%= render "form", document: @document %>
   <% end %>
 
-  <ul>
-    <% @documents.each do |document| %>
-      <li>
-        <%= link_to document.name, document_path(document) %>
-        <%= link_to 'edit', edit_document_path(document) %>
-        <%= button_to 'Delete', document, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-      </li>
+  <div class="documents-index-table">
+    <div class="documents-index-table__header">
+      <div class="documents-index-table__cell">Name</div>
+      <div class="documents-index-table__cell">Last modified by</div>
+      <div class="documents-index-table__cell">Last modified time</div>
+      <div class="documents-index-table__cell">Actions</div>
+    </div>
+
+    <% @documents.each do |d| %>
+      <div class="documents-index-table__row">
+        <div class="documents-index-table__cell"><%= d.name %></div>
+        <div class="documents-index-table__cell">temp modified by</div>
+        <div class="documents-index-table__cell">temp modified time</div>
+        <div class="documents-index-table__cell">temp actions</div>
+      </div>
     <% end %>
-  </ul>
+
+  </div>
+
+<!--  <ul>-->
+    <%# @documents.each do |document| %>
+<!--      <li>-->
+        <%#= link_to document.name, document_path(document) %>
+        <%#= link_to 'edit', edit_document_path(document) %>
+        <%#= button_to 'Delete', document, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+<!--      </li>-->
+    <%# end %>
+<!--  </ul>-->
 
 </div>
