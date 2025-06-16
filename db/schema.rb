@@ -47,6 +47,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_16_062255) do
     t.text "transcribed"
     t.text "translated"
     t.text "transliterated"
+    t.text "transcription"
+    t.text "translation"
+    t.text "transliteration"
   end
 
   create_table "users", force: :cascade do |t|
