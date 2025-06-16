@@ -3,7 +3,7 @@
      data-controller="annotator"
      data-annotator-image-url-value="<%= url_for(@document.image) %>">
   <div class="documents-edit-container__card">
-    <h2 class="documents-edit-container__card-title">Document Image</h2>
+    <h2 class="documents-edit-container__card-title"><%= @document.name %></h2>
     <div style="height: 500px;">
       <div data-annotator-target="container"
            id="openseadragon-annotator"
