@@ -34,10 +34,6 @@
     </div>
     <div class="bottom-content">
       <%= form_with model: @document do |form| %>
-        <div class="field">
-          <%= form.label :name %>
-          <%= form.text_field :name %>
-        </div>
 
         <div class="field">
           <%= form.label :image %>
@@ -45,11 +41,6 @@
           <% if @document.image.attached? %>
             <p>Current image: <%= @document.image.filename %></p>
           <% end %>
-        </div>
-
-        <div class="field">
-          <%= form.hidden_field :annotation, data: { annotator_target: "annotatorField" },
-                                value: @document.annotation || '[]' %>
         </div>
 
         <div class="actions">

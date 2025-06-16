@@ -50,7 +50,7 @@ class DocumentsController < ApplicationController
 
   private
   def document_params
-    params.require(:document).permit(:annotation, :image)
+    params.require(:document).permit(:image)
   end
 
   def set_document
