@@ -1,0 +1,24 @@
+<div class="users-index-container">
+
+
+  <h1 class="documents-index-title">Users</h1>
+
+  <%= turbo_frame_tag "new_user" do %>
+    <%= render "form", user: @user %>
+  <% end %>
+
+  <div class="documents-index-table">
+    <div class="documents-index-table__header">
+      <div class="documents-index-table__cell">Username</div>
+      <div class="documents-index-table__cell">Actions</div>
+    </div>
+
+    <%= turbo_stream_from "users" %>
+
+    <%= turbo_frame_tag "users" do %>
+      <% @users.each do |u| %>
+        <%= render partial: "user_row", locals: { u: u } %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

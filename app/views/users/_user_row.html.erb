@@ -1,0 +1,10 @@
+<div class="documents-index-table__row">
+  <div class="documents-index-table__cell"><%= u.username %></div>
+  <div class="documents-index-table__cell">
+    <div class="documents-index-table__cell-action-button-container">
+      <%#= link_to 'view', document_path(d), class: "documents-index-table__cell-action-button", data: {turbo: false} %>
+      <%= link_to 'edit', edit_user_path(u), class: "documents-index-table__cell-action-button", data: {turbo: false} %>
+      <%= button_to 'Delete', u, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "documents-index-table__cell-action-button" %>
+    </div>
+  </div>
+</div>

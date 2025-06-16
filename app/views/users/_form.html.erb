@@ -1,0 +1,25 @@
+<%= form_with model: @user, url: users_path, data: { turbo_frame: "new_user"}, class: "documents-upload__card" do |form| %>
+
+  <h2 class="documents-upload__card__title">Create user</h2>
+
+  <% if flash[:error] %>
+    <p style="color: red;"><%= flash[:error] %></p>
+  <% end %>
+
+  <div>
+    <div class="users-index-form-card__field">
+      <%= form.label :username, class: "documents-upload__card__label" %>
+      <%= form.text_field :username, required: true, class: "users-index-form__input" %>
+    </div>
+
+    <div class="users-index-form-card__field">
+      <%= form.label :password, class: "documents-upload__card__label" %>
+      <%= form.password_field :password, required: true, class: "users-index-form__input" %>
+    </div>
+
+    <div class="documents-upload__card__button_row">
+      <%= form.submit "Create", class: "documents-upload__card__button" %>
+    </div>
+
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+<%= turbo_stream.append "users", partial: "users/user_row", locals: { u: @user } %>
+<%= turbo_stream.replace "new_user", partial: "users/form", locals: { user: User.new } %>
