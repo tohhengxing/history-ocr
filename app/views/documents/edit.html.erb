@@ -39,6 +39,9 @@
         </div>
 
         <%= form.submit "Update", class: "documents-edit-container__card-form__button" %>
+        <% if flash[:notice] %>
+          <p style="color: green;text-align: center"><%= flash[:notice] %></p>
+        <% end %>
       <% end %>
 <!--      <div style="margin-top:100px;">-->
 <!--        <%#= link_to 'Show', @document %> |-->

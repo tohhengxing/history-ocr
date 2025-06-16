@@ -36,7 +36,12 @@ class DocumentsController < ApplicationController
 
   def update
     if @document.update(document_params)
-      redirect_to edit_document_path(@document), notice: "Document was successfully updated"
+      if @document.previous_changes.except(:updated_at).empty?
+        flash[:notice] = "No changes were made"
+      else
+        flash[:notice] = "Document was successfully modified"
+      end
+      redirect_to edit_document_path(@document)
     else
       flash.now[:error] = "Invalid inputs"
       render :edit, status: :unprocessable_entity
@@ -50,7 +55,7 @@ class DocumentsController < ApplicationController
 
   private
   def document_params
-    params.require(:document).permit(:image)
+    params.require(:document).permit(:image, :translation, :transcription, :transliteration)
   end
 
   def set_document
