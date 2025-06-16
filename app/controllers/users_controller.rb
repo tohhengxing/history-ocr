@@ -21,6 +21,12 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+    @users = User.all
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("new_user", partial: "form", locals: { document: @document }) }
+      format.html { render :index }
+    end
   end
 
   def update
