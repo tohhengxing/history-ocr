@@ -1,7 +1,7 @@
 <div class="documents-index-table__row">
   <div class="documents-index-table__cell"><%= d.name %></div>
   <div class="documents-index-table__cell">temp modified by</div>
-  <div class="documents-index-table__cell">temp modified time</div>
+  <div class="documents-index-table__cell"><%= d.updated_at.to_fs(:long) %></div>
   <div class="documents-index-table__cell">
     <div class="documents-index-table__cell-action-button-container">
       <%= link_to 'view', document_path(d), class: "documents-index-table__cell-action-button", data: {turbo: false} %>
