@@ -12,47 +12,39 @@
   </div>
 
   <div class="documents-edit-container__card">
-    <div class="top-content">
-      <div data-annotator-target="translation" hidden>
-        <label for="translation">input your translation</label>
-        <input id="translation" type="text">
-        <button>update annotation</button>
-      </div>
-      <div>
+      <h2 class="documents-edit-container__card-title">Tasks</h2>
+      <%= form_with model: @document, class: "documents-edit-container__card-form" do |form| %>
 
-<!--        <ol>-->
-          <%# JSON.parse(@document.annotation || '').each do |anno| %>
-<!--            <li>-->
-<!--              <%#= anno['id'] %> <br />-->
-              <%#= anno['bodies'] %>
-<!--            </li>-->
+<!--        <div class="documents-edit-card__field">-->
+          <%#= form.label :image, class: "documents-edit-card__label" %>
+          <%#= form.file_field :image %>
+          <%# if @document.image.attached? %>
+<!--            <p>Current image: <%#= @document.image.filename %></p>-->
           <%# end %>
-<!--        </ol>-->
+<!--        </div>-->
 
-
-      </div>
-    </div>
-    <div class="bottom-content">
-      <%= form_with model: @document do |form| %>
-
-        <div class="field">
-          <%= form.label :image %>
-          <%= form.file_field :image %>
-          <% if @document.image.attached? %>
-            <p>Current image: <%= @document.image.filename %></p>
-          <% end %>
+        <div class="documents-edit-container__card-form-question">
+          <%= form.label :transcription, class: "documents-edit-container__card-form-label" %>
+          <%= form.text_area :transcription, class: "documents-edit-container__card-form-text-area" %>
         </div>
 
-        <div class="actions">
-          <%= form.submit "Update" %>
+        <div class="documents-edit-container__card-form-question">
+          <%= form.label :translation, class: "documents-edit-container__card-form-label" %>
+          <%= form.text_area :translation, class: "documents-edit-container__card-form-text-area" %>
         </div>
+
+        <div class="documents-edit-container__card-form-question">
+          <%= form.label :transliteration, class: "documents-edit-container__card-form-label" %>
+          <%= form.text_area :transliteration, class: "documents-edit-container__card-form-text-area" %>
+        </div>
+
+        <%= form.submit "Update", class: "documents-edit-container__card-form__button" %>
       <% end %>
-      <div style="margin-top:100px;">
-        <%= link_to 'Show', @document %> |
-        <%= link_to 'Back', documents_path %>
-      </div>
+<!--      <div style="margin-top:100px;">-->
+<!--        <%#= link_to 'Show', @document %> |-->
+        <%#= link_to 'Back', documents_path %>
+<!--      </div>-->
     </div>
 
-  </div>
 </div>
 
