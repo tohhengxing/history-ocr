@@ -1,9 +1,9 @@
-<h1>Edit document</h1>
 
-<div class="page-layout"
+<div class="documents-edit-container"
      data-controller="annotator"
      data-annotator-image-url-value="<%= url_for(@document.image) %>">
-  <div class="left-panel">
+  <div class="documents-edit-container__card">
+    <h2 class="documents-edit-container__card-title">Document Image</h2>
     <div style="height: 500px;">
       <div data-annotator-target="container"
            id="openseadragon-annotator"
@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div class="right-panel">
+  <div class="documents-edit-container__card">
     <div class="top-content">
       <div data-annotator-target="translation" hidden>
         <label for="translation">input your translation</label>

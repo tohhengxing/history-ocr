@@ -105,3 +105,24 @@
 .documents-upload__card__button:hover {
     opacity: 0.75;
 }
+
+.documents-edit-container {
+    width: 100%;
+    margin: 2rem auto;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.documents-edit-container__card {
+    min-width: 40%;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.documents-edit-container__card-title {
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
