@@ -3,9 +3,9 @@
 
   <h1 class="documents-index-title">Users</h1>
 
-  <%= turbo_frame_tag "new_user" do %>
-    <%= render "form", user: @user %>
-  <% end %>
+  <%= Time.now %>
+
+  <%= render partial: "form", locals: { user: @user } %>
 
   <div class="documents-index-table">
     <div class="documents-index-table__header">

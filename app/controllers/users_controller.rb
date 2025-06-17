@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     else
       flash.now[:error] = "User already exists!"
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("new_user", partial: "form", locals: { user: @user }) }
+        format.turbo_stream
         format.html { render :index, status: :unprocessable_entity }
       end
     end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = User.all
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace("new_user", partial: "form", locals: { document: @document }) }
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("new_user", partial: "form", locals: { user: @user }) }
       format.html { render :index }
     end
   end

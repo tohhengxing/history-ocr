@@ -1,36 +1,40 @@
-<%= form_with model: @user, url: users_path, data: { turbo_frame: "new_user"}, class: "documents-upload__card" do |form| %>
 
-  <h2 class="documents-upload__card__title">Create user</h2>
+<%= turbo_frame_tag "new_user" do %>
+  <%= form_with model: user, url: users_path, data: { turbo_frame: "new_user"}, class: "documents-upload__card" do |form| %>
 
-  <div>
-    <% if flash[:error] %>
-      <p style="color: red;"><%= flash[:error] %></p>
-    <% end %>
-    <% if flash[:alert] %>
-      <p style="color: green;"><%= flash[:alert] %></p>
-    <% end %>
-  </div>
+    <%= Time.now %>
+    <h2 class="documents-upload__card__title">Create user</h2>
 
-
-  <div>
-    <div class="users-index-form-card__field">
-      <%= form.label :username, class: "documents-upload__card__label" %>
-      <%= form.text_field :username, required: true, class: "users-index-form__input" %>
+    <div>
+      <% if flash[:error].present? %>
+        <p style="color: red;"><%= flash[:error] %></p>
+      <% end %>
+      <% if flash[:alert].present? %>
+        <p style="color: green;"><%= flash[:alert] %></p>
+      <% end %>
     </div>
 
-    <div class="users-index-form-card__field">
-      <%= form.label :password, class: "documents-upload__card__label" %>
-      <%= form.password_field :password, required: true, class: "users-index-form__input" %>
-    </div>
 
-    <div class="users-index-form-card__field">
-      <%= form.label :role, class: "documents-upload__card__label" %>
-      <%= form.select :role, User.roles.keys.map { |r| [r.humanize, r] }, selected: User.roles.key(1) %>
-    </div>
+    <div>
+      <div class="users-index-form-card__field">
+        <%= form.label :username, class: "documents-upload__card__label" %>
+        <%= form.text_field :username, required: true, class: "users-index-form__input" %>
+      </div>
 
-    <div class="documents-upload__card__button_row">
-      <%= form.submit "Create", class: "documents-upload__card__button" %>
-    </div>
+      <div class="users-index-form-card__field">
+        <%= form.label :password, class: "documents-upload__card__label" %>
+        <%= form.password_field :password, required: true, class: "users-index-form__input" %>
+      </div>
 
-  </div>
+      <div class="users-index-form-card__field">
+        <%= form.label :role, class: "documents-upload__card__label" %>
+        <%= form.select :role, User.roles.keys.map { |r| [r.humanize, r] }, selected: User.roles.key(1) %>
+      </div>
+
+      <div class="documents-upload__card__button_row">
+        <%= form.submit "Create", class: "documents-upload__card__button" %>
+      </div>
+
+    </div>
+  <% end %>
 <% end %>
