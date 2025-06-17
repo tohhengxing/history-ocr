@@ -1,1 +1,52 @@
-<%#= render "form", user: @user %>
+<div class="users-index-container">
+
+
+  <h1 class="documents-index-title">Users</h1>
+
+  <%= Time.now %>
+
+
+  <%#= turbo_frame_tag "edit_user" do %>
+    <%= form_with model: @user, class: "documents-upload__card" do |form| %>
+
+      <%= Time.now %>
+      <h2 class="documents-upload__card__title">Edit user</h2>
+
+      <div>
+        <% if flash[:error].present? %>
+          <p style="color: red;"><%= flash[:error] %></p>
+        <% end %>
+        <% if flash[:alert].present? %>
+          <p style="color: green;"><%= flash[:alert] %></p>
+        <% end %>
+      </div>
+
+
+      <div>
+        <div class="users-index-form-card__field">
+          <%= form.label :username, class: "documents-upload__card__label" %>
+          <%= form.text_field :username, required: true, class: "users-index-form__input" %>
+        </div>
+
+        <div class="users-index-form-card__field">
+          <%= form.label :password, class: "documents-upload__card__label" %>
+          <%= form.password_field :password, required: true, class: "users-index-form__input" %>
+        </div>
+
+        <div class="users-index-form-card__field">
+          <%= form.label :role, class: "documents-upload__card__label" %>
+          <%= form.select :role, User.roles.keys.map { |r| [r.humanize, r] }, selected: User.roles.key(1) %>
+        </div>
+
+        <div class="documents-upload__card__button_row">
+          <%= form.submit "Edit", class: "documents-upload__card__button" %>
+        </div>
+
+      </div>
+    <% end %>
+  <%# end %>
+
+
+
+
+</div>

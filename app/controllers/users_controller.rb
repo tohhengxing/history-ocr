@@ -24,20 +24,19 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @users = User.all
-    respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace("new_user", partial: "form", locals: { user: @user }) }
-      format.html { render :index }
-    end
   end
 
   def update
+    @user = User.find(params[:id])
     if @user.update(user_params)
       if @user.previous_changes.except(:updated_at).empty?
         flash[:notice] = "No changes were made"
       else
         flash[:notice] = "Document was successfully modified"
       end
-      redirect_to users_path
+      respond_to do |format|
+        format.html { redirect_to users_path }
+      end
     else
       flash.now[:error] = "Invalid inputs"
       render :edit, status: :unprocessable_entity
