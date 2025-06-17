@@ -6,7 +6,9 @@
     <div class="documents-index-table__cell-action-button-container">
       <%#= link_to 'view', document_path(d), class: "documents-index-table__cell-action-button", data: {turbo: false} %>
       <%= link_to 'edit', edit_document_path(d), class: "documents-index-table__cell-action-button", data: {turbo: false} %>
-      <%= button_to 'Delete', d, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "documents-index-table__cell-action-button" %>
+      <% if current_user.admin? %>
+        <%= button_to 'Delete', d, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "documents-index-table__cell-action-button" %>
+      <% end %>
     </div>
   </div>
 </div>
