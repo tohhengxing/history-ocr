@@ -1,4 +1,5 @@
-<%= form_with model: @document, url: documents_path, data: { turbo_frame: "new_document"}, class: "documents-upload__card", html: {multipart: true} do |form| %>
+<%= turbo_frame_tag "new_document" do %>
+  <%= form_with model: document, url: documents_path, data: { turbo_frame: "new_document"}, class: "documents-upload__card", html: {multipart: true} do |form| %>
 
   <h2 class="documents-upload__card__title">Upload document</h2>
 
@@ -18,5 +19,4 @@
 
   </div>
 <% end %>
-
-<%#= link_to 'Back', documents_path %>
+<% end %>

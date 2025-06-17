@@ -3,9 +3,7 @@
 
   <h1 class="documents-index-title">Documents</h1>
 
-  <%= turbo_frame_tag "new_document" do %>
-    <%= render "form", document: @document %>
-  <% end %>
+  <%= render "form", document: @document %>
 
   <div class="documents-index-table">
     <div class="documents-index-table__header">

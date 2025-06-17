@@ -1,2 +1,6 @@
-<%= turbo_stream.append "documents", partial: "documents/document_row", locals: { d: @document } %>
-<%= turbo_stream.replace "new_document", partial: "documents/form", locals: { document: Document.new } %>
+<% if @document.errors.any? %>
+  <%= turbo_stream.replace "new_document", partial: "form", locals: { user: @document } %>
+<% else %>
+  <%= turbo_stream.append "documents", partial: "documents/document_row", locals: { d: @document } %>
+  <%= turbo_stream.replace "new_document", partial: "documents/form", locals: { document: Document.new } %>
+<% end %>
