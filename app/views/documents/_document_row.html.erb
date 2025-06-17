@@ -1,6 +1,6 @@
 <div class="documents-index-table__row">
   <div class="documents-index-table__cell"><%= d.name %></div>
-  <div class="documents-index-table__cell">temp modified by</div>
+  <div class="documents-index-table__cell"><%= d.task.user&.username %></div>
   <div class="documents-index-table__cell"><%= d.updated_at.to_fs(:long) %> UTC</div>
   <div class="documents-index-table__cell">
     <div class="documents-index-table__cell-action-button-container">

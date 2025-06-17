@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :require_login
-  before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_action :set_document, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @documents = Document.all
@@ -57,7 +57,7 @@ class DocumentsController < ApplicationController
   private
   def document_params
     params.require(:document).permit(:image, :translation, :transcription, :transliteration,
-                                     task_attributes: [:user_id])
+                                     task_attributes: [ :id, :user_id ])
   end
 
   def set_document
