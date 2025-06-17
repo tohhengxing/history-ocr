@@ -38,6 +38,15 @@
           <%= form.text_area :transliteration, class: "documents-edit-container__card-form-text-area" %>
         </div>
 
+      <% if current_user.admin? %>
+        <div class="documents-edit-container__card-form-question">
+          <%= form.fields_for :task do |task_fields| %>
+            <%= form.label "Assigned user", class: "documents-edit-container__card-form-label" %>
+            <%= task_fields.collection_select :user_id, User.all, :id, :username, prompt: "Select user" %>
+          <% end %>
+        </div>
+      <% end %>
+
         <%= form.submit "Update", class: "documents-edit-container__card-form__button" %>
         <% if flash[:notice] %>
           <p style="color: green;text-align: center"><%= flash[:notice] %></p>
