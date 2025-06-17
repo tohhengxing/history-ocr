@@ -19,7 +19,9 @@
 
     <%= turbo_frame_tag "documents" do %>
       <% @documents.each do |d| %>
-        <%= render partial: "document_row", locals: { d: d } %>
+        <% if current_user.admin? or d.task.user&.username == current_user.username %>
+          <%= render partial: "document_row", locals: { d: d } %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
