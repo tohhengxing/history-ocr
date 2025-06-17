@@ -3,7 +3,9 @@
 
   <h1 class="documents-index-title">Documents</h1>
 
-  <%= render "form", document: @document %>
+  <% if current_user.admin? %>
+    <%= render "form", document: @document %>
+  <% end %>
 
   <div class="documents-index-table">
     <div class="documents-index-table__header">
