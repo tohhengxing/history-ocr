@@ -13,6 +13,13 @@
       <%= form.file_field :image, required: true %>
     </div>
 
+    <div class="documents-upload__card__field">
+      <%= form.fields_for :task do |task_fields| %>
+        <%= form.label "Assigned user", class: "documents-upload__card__label" %>
+        <%= task_fields.collection_select :user_id, User.all, :id, :username, prompt: "Select user" %>
+      <% end %>
+    </div>
+
     <div class="documents-upload__card__button_row">
       <%= form.submit "Upload", class: "documents-upload__card__button" %>
     </div>

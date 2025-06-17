@@ -5,6 +5,7 @@ class DocumentsController < ApplicationController
   def index
     @documents = Document.all
     @document = Document.new
+    @document.build_task
   end
 
   def show
@@ -55,7 +56,8 @@ class DocumentsController < ApplicationController
 
   private
   def document_params
-    params.require(:document).permit(:image, :translation, :transcription, :transliteration)
+    params.require(:document).permit(:image, :translation, :transcription, :transliteration,
+                                     task_attributes: [:user_id])
   end
 
   def set_document
