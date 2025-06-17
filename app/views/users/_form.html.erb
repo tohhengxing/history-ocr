@@ -5,6 +5,9 @@
   <% if flash[:error] %>
     <p style="color: red;"><%= flash[:error] %></p>
   <% end %>
+  <% if flash[:notice] %>
+    <p style="color: green;"><%= flash[:notice] %></p>
+  <% end %>
 
   <div>
     <div class="users-index-form-card__field">
