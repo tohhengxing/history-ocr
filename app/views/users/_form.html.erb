@@ -2,12 +2,15 @@
 
   <h2 class="documents-upload__card__title">Create user</h2>
 
-  <% if flash[:error] %>
-    <p style="color: red;"><%= flash[:error] %></p>
-  <% end %>
-  <% if flash[:notice] %>
-    <p style="color: green;"><%= flash[:notice] %></p>
-  <% end %>
+  <div>
+    <% if flash[:error] %>
+      <p style="color: red;"><%= flash[:error] %></p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p style="color: green;"><%= flash[:alert] %></p>
+    <% end %>
+  </div>
+
 
   <div>
     <div class="users-index-form-card__field">

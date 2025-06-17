@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash.now[:notice] = "User created!"
+      flash.now[:alert] = "User created!"
       respond_to do |format|
         format.turbo_stream
         format.html { redirect_to users_path }
