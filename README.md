@@ -1,24 +1,42 @@
-# README
+# Rails App Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Prerequisites
+- macOS, Linux, or WSL2 (for Windows)
+- Git
+- Build tools (Xcode Command Line Tools on macOS, build-essential on Ubuntu)
 
-Things you may want to cover:
+## Ruby Environment Setup
 
-* Ruby version
+### 1. Install rbenv
 
-* System dependencies
+**macOS (using Homebrew):**
+```bash
+brew install rbenv ruby-build
+```
+**Ubuntu**
+```bash
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+```
 
-* Configuration
+Or follow the instructions here https://github.com/rbenv/rbenv
 
-* Database creation
+### 2. Use rbenv to install ruby 3.2.0
+```bash
+rbenv install 3.2.0  # Note: Ruby 8.0.2 doesn&#x27;t exist, using 3.2.0
+rbenv global 3.2.0
+```
 
-* Database initialization
+### 3. Navigate to app root directory to install necessary packages
+```bash
+cd /path/to/app/
+bundle
+```
 
-* How to run the test suite
+### 4. Run the application
+```bash
+foreman start -f Procfile.dev
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### 5. Visit localhost:3000
 
-* Deployment instructions
-
-* ...
