@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(params[:password])
       session[:user_id] = user&.id
-      redirect_to root_path
+      redirect_to documents_path
     else
       flash.now[:alert] = "Invalid username or password"
       render :new, status: :unprocessable_entity

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root "home#index"
+  root "sessions#new"
 
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
