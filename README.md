@@ -1,3 +1,8 @@
+# Notice
+
+There are 2 branches, the `main` branch contains the experiment on the annotorius annotation library. The `major-refactor`
+branch contains the features without annotation (user management, documents upload etc).
+
 # Rails App Setup
 
 ## Prerequisites
